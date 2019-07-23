@@ -1,0 +1,27 @@
+<% include partesReutilizables/_cabecera %>
+
+<div class="containe">
+  <div class="row">
+    
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <form action="/actualizar/<%= tarea._id %>" method="POST">
+            <div class="form-group">
+              <input value="<%= tarea.titulo %>"class="form-control" type="text" name="titulo" placeholder="Inserte un titulo">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="descripcion" cols="80" placeholder="Inserta una descripcion"><%= tarea.descripcion %></textarea>
+            </div>
+            <button type="submit" name="button" class="btn btn-primary btn-block">
+              Actualizar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<% include partesReutilizables/_pieDePagina %>

@@ -1,0 +1,54 @@
+<% include partesReutilizables/_cabecera %>
+
+    <div class="container">
+      <div class='row'>
+        <!-- FORMULARIO -->
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-body">
+              <form action="/add" method="POST">
+                <div class="form-group">
+                  <input class="form-control" type="text" name="titulo" placeholder="Inserte un titulo">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="descripcion" cols="80" placeholder="Inserta una descripcion"></textarea>
+                </div>
+                <button type="submit" name="button" class="btn btn-primary btn-block">
+                  Agregar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- LISTAR-->
+        <div class="col-md-7">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>N°</th>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i < tareas.length; i++){ %>
+                <tr>
+                  <td><%= i + 1 %></td>
+                  <td><%= tareas[i].titulo%></td>
+                  <td><%= tareas[i].descripcion%></td>
+                  <td>
+                    <a href="/turn/<%= tareas[i]._id %>"
+                      class="btn <%= tareas[i].estado ? 'btn-success' : 'btn-dark' %>">
+                      Hecho</a>
+                    <a href="/delete/<%= tareas[i]._id%>" class="btn btn-danger">Eliminar</a>
+                    <a href="/edit/<%= tareas[i]._id%>" class="btn btn-info">Editar</a>
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+<% include partesReutilizables/_pieDePagina %>
